@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Первая галерея Roboto Slab</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--primary: #4361ee;
+			--secendary: #3f37c9;
+			--accent: #f72585;
+			--light: #f8f9fa;
+			--dark: #212529;
+			--card-bg:rgba(255,255,255,0.95);
+		}
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body {
+			background: linear-gradient(135deg, #7209b7, #3a0ca3);
+			color: var(--dark);
+			min-height: 100vh;
+			padding: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.container {
+			width: 100%;
+			max-width: 1200px;
+		}
+		.card {
+			background: var(--card-bg);
+			border-radius: 20px;
+			box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+			padding: 30px;
+			transform-style: preserve-3d;
+			transition: transform 0.5s ease;
+			overflow: hidden;
+		}
+		.card:hover {
+			transform: translateX(-10px) rotateX(5deg);
+		}
+		header {
+			text-align:center;
+			margin-bottom: 30px;
+			position: relative; 
+		}
+		.avatar-container {
+			width: 150px;
+			height: 150px;
+			margin: 0 auto 20px;
+			position: relative;
+		}
+		.avatar {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			border: 5px solid var(--primary);
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+			object-fit: cover;
+		}
+		h1 {
+			color: var(--primary);
+			font-size: 2.5rem;
+			margin-bottom: 10px;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+		}
+		.tagline {
+			color: var(--primary);
+			font-size: 1.2rem;
+			margin-bottom: 0 auto;
+			max-width: 600px;
+		}
+		.gallary-item {
+			position: relative;
+			border-radius: 15px;
+			overflow: hidden;
+			aspect-ratio: 4/3;
+			flex: 1 1 250px;
+			max-width: 350px;
+		}
+		.gallary-img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: all 0.5s ease;
+		}
+		.gallary-item:hover .gallary-img{
+			transform: scale(1.1);
+			filter: brightness(0.7);
+		}
+		.gallary-caption {
+			position: absolute;
+			bottom: -32px;
+			left: 0;
+			right: 0;
+			background: rgba(255, 255, 255, 0.7);
+			padding: 15px;
+			text-align: center;
+			transition: bottom 0.5s ease;
+		}
+		.gallary-item:hover .gallary-caption{
+			bottom: 0;
+		}
+		.gallary-flex {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 20px;
+		}
+		.lightbox {
+			position: fixed;
+			top: 40px;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.9);
+			display: flex;
+			align-self: center;
+			justify-content: center;
+			z-index: 1000;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.5s ease;
+		}
+		.lightbox:target {
+			opacity: 1;
+			pointer-events: all;
+		}
+		.lightbox-content {
+			position: relative;
+			max-width: 90%;
+			max-height: 90%;
+		}
+		.lightbox-img {
+			max-width: 100%;
+			max-height: 80vh;
+			border: 5px solid white;
+			border-radius: 10px;
+			box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+		}
+		.lightbox-close {
+			position: absolute;
+			top: -40px;
+			color: white;
+			font-size: 2rem;
+			text-decoration: none;
+			transition: all 0.3s ease;
+		}
+		.lightbox-close:hover {
+			color: var(--accent);
+			transform: rotate(90deg);
+
+		}
+		footer {
+			text-align: center;
+			margin-top: 40px;
+			padding-top: 20px;
+			border-top: 2px dashed var(--primary);
+			color: var(--secendary);
+		}
+		.footer-text {
+			font-size: 1.1rem;
+			margin-bottom: 10px;
+		}
+		.highlight {
+			color: var(--accent);
+			font-weight: bold;
+		}
+		h2 {
+			color: #4361ee;
+			margin-left: 485px;
+			margin-bottom: 10px;
+			font-size: 1.8rem;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="card floating">
+			<header>
+				<div class="avatar-container"><img src="img/avatar1.jpg" alt="" class="avatar">
+				</div>
+				<h1>Чикров Кирилл</h1>
+				<p2 class="tagline">Начинающий программист</p2>
+			</header>
+			<div class="gallary-section">
+				<div class="section-title">
+					<h2>Моя галерея</h2>
+				</div>
+			<div class="gallary-flex">
+			<div class="gallary-item"><a href="#img1"><img src="img/1.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 1</h3>
+				<p>Описание 1</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img2"><img src="img/2.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 2</h3>
+				<p>Описание 2</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img3"><img src="img/3.jpg" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 3</h3>
+				<p>Описание 3</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img4"><img src="img/4.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 4</h3>
+				<p>Описание 4</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img5"><img src="img/5.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 5</h3>
+				<p>Описание 5</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img6"><img src="img/6.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 6</h3>
+				<p>Описание 6</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img7"><img src="img/7.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 7</h3>
+				<p>Описание 7</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img8"><img src="img/8.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 8</h3>
+				<p>Описание 8</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img9"><img src="img/9.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 9</h3>
+				<p>Описание 9</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img10"><img src="img/10.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 10</h3>
+				<p>Описание 10</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img11"><img src="img/11.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 11</h3>
+				<p>Описание 11</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img12"><img src="img/12.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 12</h3>
+				<p>Описание 12</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img13"><img src="img/13.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 13</h3>
+				<p>Описание 13</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img14"><img src="img/14.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 14</h3>
+				<p>Описание 14</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img15"><img src="img/15.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 15</h3>
+				<p>Описание 15</p>
+			</div>
+			</div>
+			<div class="gallary-item"><a href="#img16"><img src="img/16.png" alt="" class="gallary-img"></a>
+			<div class="gallary-caption">
+				<h3>Заголовок 16</h3>
+				<p>Описание 16</p>
+				</div>
+			</div>
+			</div>
+			<footer>
+				<p class="footer-text">Создано на занятиях <span class="highlight">Coddy</span></p>
+				<p>Использовано: flexbox, анимации, трансформации, фильтры изображений</p>
+			</footer>
+		</div>
+		</div>
+		<div class="lightbox" id="img1">
+			<div class="lightbox-content"><img src="img/1.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img2">
+			<div class="lightbox-content"><img src="img/2.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img3">
+			<div class="lightbox-content"><img src="img/3.jpg" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img4">
+			<div class="lightbox-content"><img src="img/4.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img5">
+			<div class="lightbox-content"><img src="img/5.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img6">
+			<div class="lightbox-content"><img src="img/6.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img7">
+			<div class="lightbox-content"><img src="img/7.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img8">
+			<div class="lightbox-content"><img src="img/8.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img9">
+			<div class="lightbox-content"><img src="img/9.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img10">
+			<div class="lightbox-content"><img src="img/10.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img11">
+			<div class="lightbox-content"><img src="img/11.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img12">
+			<div class="lightbox-content"><img src="img/12.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img13">
+			<div class="lightbox-content"><img src="img/13.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img14">
+			<div class="lightbox-content"><img src="img/14.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img15">
+			<div class="lightbox-content"><img src="img/15.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+		<div class="lightbox" id="img16">
+			<div class="lightbox-content"><img src="img/16.png" alt="" class="lightbox-img"><a href="" class="lightbox-close">&times;</a></div>
+		</div>
+	</div>
+</body>
+</html>
